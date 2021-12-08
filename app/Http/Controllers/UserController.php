@@ -35,7 +35,7 @@ class UserController extends Controller
             'avatar' => 'required',
         ]);
         $user = new User;
-        if ($request->role_id === "3") {
+        if ($request->role_id === "1") {
             $user->organization_id = 0;
         }else {
             $user->organization_id = $request->org_id;

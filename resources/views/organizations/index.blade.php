@@ -5,22 +5,23 @@
 
         <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Organization List</h1>
-    @if (Auth::user()->role_id === 1)
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="mb-3">
+          <form class="form-inline" method="GET" action="{{ route('organization_list') }}">
+            <label class="sr-only" for="inlineFormInputName2">Search</label>
+            <input type="text" class="form-control mb-2 mr-sm-2" name="search" id="inlineFormInputName2" placeholder="Search" {% if Request::get('search') %} value="{{ Request::get('search') }}" {% endif %}>
+            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+          </form>
+      </div>
+    </div>
+    @if (Auth::user()->role_id === 1 || Auth::user()->role_id === 2)
       <div class="row">
         <div class="col-md-2">
           <div class="mb-3">
               <a href="{{ route('organization_add') }}" class="btn btn-primary">
                   <i class="fa fa-plus"></i> Add
               </a>
-          </div>
-        </div>
-        <div class="col-md-8">
-          <div class="mb-3">
-              <form class="form-inline" method="GET" action="{{ route('organization_list') }}">
-                <label class="sr-only" for="inlineFormInputName2">Search</label>
-                <input type="text" class="form-control mb-2 mr-sm-2" name="search" id="inlineFormInputName2" placeholder="Search" {% if Request::get('search') %} value="{{ Request::get('search') }}" {% endif %}>
-                <button type="submit" class="btn btn-primary mb-2">Submit</button>
-              </form>
           </div>
         </div>
       </div>
@@ -86,7 +87,7 @@
                       </div>
                     </div>
                   </div>
-                @elseif (Auth::user()->organization_id === $organization->id && Auth::user()->role_id === 3)
+                @elseif (Auth::user()->organization_id === $organization->id && Auth::user()->role_id === 2)
                   <tr>
                       <td>{{ $key+1 }}</td>
                       <td>{{ $organization->name }}</td>

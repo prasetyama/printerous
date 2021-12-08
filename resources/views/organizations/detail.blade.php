@@ -31,6 +31,17 @@
     </div>
 
     <h3 class="h3 mb-2 text-gray-800">PIC</h3>
+    @if (Auth::user()->role_id === 1 || Auth::user()->role_id === 2)
+      <div class="row">
+        <div class="col-md-2">
+          <div class="mb-3">
+              <a href="{{ route('user_create') }}" class="btn btn-primary">
+                  <i class="fa fa-plus"></i> Add
+              </a>
+          </div>
+        </div>
+      </div>
+    @endif
     <div class="card">
         <div class="card-body">
             <div class="row">
