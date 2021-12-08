@@ -10,9 +10,16 @@ use Hash;
 
 class OrganizationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $organizations = Organization::all();
+
+        $search = $request->search;
+
+        if ($search){
+            $organizations = Organization::where('name','LIKE',"%".$search."%")->get();
+        }
+
         return view('organizations.index', compact('organizations'));
     }
 
