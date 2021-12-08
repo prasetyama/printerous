@@ -29,9 +29,7 @@
                 <th>Phone</th>
                 <th>Email</th>
                 <th>Logo</th>
-                @if (Auth::user()->organization_id === 0 && Auth::user()->role_id === 1)
-                  <th>Options</th>
-                @endif
+                <th>Options</th>
               </tr>
             </thead>
             <tbody>
@@ -50,6 +48,7 @@
                           <a href="{{ route('organization_edit', $organization->id) }}" class="btn btn-primary btn-circle btn-sm">
                               <i class="fa fa-edit"></i>
                           </a>
+                          <a href="{{ route('organization_detail', $organization->id) }}" class="btn btn-primary btn-circle btn-sm"><i class="fa fa-eye"></i></a>
                           <button data-toggle="modal" data-target="#deleteOrg{{ $organization->id }}" class="btn btn-danger btn-circle btn-sm">
                               <i class="fa fa-trash"></i>
                           </button>
@@ -84,6 +83,9 @@
                       <td>
                           <img src="{{ url($organization->logo) }}" alt="{{$organization->logo}}" class="img-fluid" width="80">
                       </td>
+                      <td>
+                        <a href="{{ route('organization_detail', $organization->id) }}" class="btn btn-primary btn-circle btn-sm"><i class="fa fa-eye"></i></a>
+                      </td>
                   </tr>
                 @else
                   <tr>
@@ -93,6 +95,9 @@
                       <td>{{ $organization->email }}</td>
                       <td>
                           <img src="{{ url($organization->logo) }}" alt="{{$organization->logo}}" class="img-fluid" width="80">
+                      </td>
+                      <td>
+                        <a href="{{ route('organization_detail', $organization->id) }}" class="btn btn-primary btn-circle btn-sm"><i class="fa fa-eye"></i></a>
                       </td>
                   </tr>
                 @endif

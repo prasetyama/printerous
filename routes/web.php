@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/organization/add', 'OrganizationController@add')->name('organization_add');
     Route::post('/organization/submit', 'OrganizationController@submit_add')->name('organization_process');
     Route::get('/organization/edit/{id}', 'OrganizationController@edit')->name('organization_edit');
+    Route::get('/organization/detail/{id}', 'OrganizationController@detail')->name('organization_detail');
     Route::post('/organization/update', 'OrganizationController@submit_edit')->name('organization_update');
     Route::get('/organization/delete/{id}', 'OrganizationController@delete')->name('organization_delete');
 

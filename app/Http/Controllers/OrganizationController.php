@@ -95,4 +95,10 @@ class OrganizationController extends Controller
             }
         }
     }
+
+    public function detail(Request $request)
+    {
+        $organization = Organization::where('id', $request->id)->first();  
+        return view('organizations.detail', compact('organization'));
+    }
 }
