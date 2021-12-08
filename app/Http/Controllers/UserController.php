@@ -74,6 +74,10 @@ class UserController extends Controller
             }else {
                 $user->password = $user->password;
             }
+
+            if ($request->avatar != ''){
+                $user->avatar = $request->file('avatar')->move('uploads/avatar', $request->file('avatar')->getClientOriginalName());
+            }
             if ($user->save()) {
                 $request->session()->flash('message', 'Data berhasil terupdate!');
                 return redirect('user');

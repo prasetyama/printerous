@@ -70,8 +70,8 @@
                             <div class="col-md-4">
                                 <div class="img-upload-preview">
                                     <img src="{{ url($user->avatar) }}" alt="" width="200" class="img-responsive">
-                                    <input type="hidden" name="avatar_old" value="{{ $user->avatar }}">
                                 </div>
+                                <input type="file" class="form-control" name="avatar">
                             </div>
                         </div>
                     </div>
