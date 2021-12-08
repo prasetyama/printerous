@@ -31,4 +31,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/organization/update', 'OrganizationController@submit_edit')->name('organization_update');
     Route::get('/organization/delete/{id}', 'OrganizationController@delete')->name('organization_delete');
 
+
+    Route::group(['middleware' => ['admin']], function () {
+        Route::get('/user', 'UserController@index')->name('user_index');
+        Route::get('/user-create', 'UserController@create')->name('user_create');
+        Route::post('/user-create', 'UserController@create_proses')->name('user_proses');
+        Route::get('/user-update/{id}', 'UserController@update')->name('user_update');
+        Route::post('/user-update', 'UserController@update_proses')->name('update_proses_user');
+        Route::get('/user-details', 'UserController@details')->name('user_details');
+        Route::get('/user-destroy/{id}', 'UserController@destroy')->name('user_destroy');
+    });
+
 });

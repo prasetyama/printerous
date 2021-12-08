@@ -37,13 +37,15 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="/" class="nav-link">
-              <p>
-                Person
-              </p>
-            </a>
-          </li>
+          @if (Auth::user()->role_id === 1)
+            <li class="nav-item">
+              <a href="/user" class="nav-link">
+                <p>
+                  User
+                </p>
+              </a>
+            </li>
+          @endif
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
